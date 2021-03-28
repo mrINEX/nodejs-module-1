@@ -25,6 +25,12 @@ npm install
 npm start {mode}
 
 ```
+or
+
+```
+npm run task-1 {mode}
+
+```
 
 ## CLI tool accepts 1 option (mode):
 
