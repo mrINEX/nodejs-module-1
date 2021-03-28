@@ -26,7 +26,7 @@ npm start {mode}
 
 ```
 
-# CLI tool accepts 1 option (mode):
+## CLI tool accepts 1 option (mode):
 
 1.  **transformStreamMode**: run application with this mode
 2.  **flowingMode**: run application with this mode
