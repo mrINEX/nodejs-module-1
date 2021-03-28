@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon",
-    "task-1": "nodemon",
+    "task-1": "nodemon ./src/task-1/app.ts",
+    "task-2": "nodemon ./src/task-2/app.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
