@@ -1,11 +1,7 @@
-import { Transform } from "stream";
-import reverseString from "./reverse_string";
+import chooseMode from './choose-mode';
 
-process.stdin.pipe(
-  new Transform({
-    transform(chunk: Buffer, encoding: string, callback): void {
-      const result: string = reverseString(chunk.toString()) + '\n';
-      callback(null, result);
-    }
-  })
-).pipe(process.stdout);
+const [,, mode] = process.argv;
+
+const modeFunction = chooseMode(mode);
+
+modeFunction();
