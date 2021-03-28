@@ -19,21 +19,7 @@ npm install
 
 ## Running application
 
-**transformStreamMode** is default **mode**.
+```
+npm run task-2
 
 ```
-npm start {mode}
-
-```
-or
-
-```
-npm run task-1 {mode}
-
-```
-
-## CLI tool accepts 1 option (mode):
-
-1.  **transformStreamMode**: run application with this mode
-2.  **flowingMode**: run application with this mode
-3.  **pausedMode**: run application with this mode
