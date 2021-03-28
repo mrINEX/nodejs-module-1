@@ -17,5 +17,8 @@
   "devDependencies": {
     "@types/node": "^14.14.37",
     "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "csvtojson": "^2.0.10"
   }
 }
