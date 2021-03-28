@@ -12,5 +12,7 @@ export default function chooseMode(mode: string = 'transformStreamMode'): modeFu
       return flowingMode;
     case 'pausedMode':
       return pausedMode;
+    default:
+      return transformStreamMode;
   }
 }
