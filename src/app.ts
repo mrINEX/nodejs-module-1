@@ -1,9 +1,9 @@
 import chooseMode from './choose-mode';
 
-type IModeFunction = () => void;
+type ModeFunction = () => void;
 
 const [,, mode] = process.argv;
 
-const modeFunction: IModeFunction = chooseMode(mode);
+const modeFunction: ModeFunction = chooseMode(mode);
 
 modeFunction();
