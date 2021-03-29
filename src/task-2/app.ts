@@ -12,6 +12,13 @@ const writable: WriteStream = createWriteStream(`${__dirname}/txt/content.txt`);
 
 readable
   .on('error', handling)
-  .pipe(csv())
+  .pipe(csv()
+    .preFileLine((fileLineString, lineIdx) => {
+      const str = `This line [${fileLineString}] number [${lineIdx}] has been parsed in csv stream.`
+      console.log(str);
+      return new Promise((resolve)=>{
+        resolve(fileLineString);
+      })
+    }))
   .pipe(writable)
   .on('error', handling);
