@@ -14,8 +14,10 @@ readable
   .on('error', handling)
   .pipe(csv()
     .preFileLine((fileLineString, lineIdx) => {
-      const str = `This line [${fileLineString}] number [${lineIdx}] has been parsed in csv stream.`
-      console.log(str);
+      const line = `[ \x1b[32m${fileLineString}\x1b[0m ]`;
+      const numberLine = `[ \x1b[32m${lineIdx}\x1b[0m ]`;
+      const info = `This line ${line} number ${numberLine} has been parsed in csv stream.`
+      process.stdout.write(info + '\n');
       return new Promise((resolve)=>{
         resolve(fileLineString);
       })
