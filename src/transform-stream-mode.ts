@@ -1,12 +1,13 @@
-import { Transform } from "stream";
-import reverseString from "./reverse_string";
+import { Transform } from 'stream';
+import { reverseString, cutLastChar } from './utils';
+import { EOL } from 'os';
 
 export default function transformStreamMode(): void {
   process.stdin.pipe(
     new Transform({
       transform(chunk: Buffer, encoding: string, callback): void {
-        const result: string = reverseString(chunk.toString()) + '\n';
-        callback(null, result);
+        const cutString: string = cutLastChar(chunk.toString());
+        callback(null, `${reverseString(cutString)}${EOL}`);
       }
     })
   ).pipe(process.stdout);

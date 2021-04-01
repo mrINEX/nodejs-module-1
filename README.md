@@ -22,12 +22,6 @@ npm install
 **transformStreamMode** is default **mode**.
 
 ```
-npm start {mode}
-
-```
-or
-
-```
 npm run task-1 {mode}
 
 ```
