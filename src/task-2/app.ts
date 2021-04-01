@@ -1,6 +1,8 @@
-import { createReadStream, createWriteStream } from "fs";
-import { ReadStream, WriteStream } from "node:fs";
-import Path from "path";
+import {
+  createReadStream, createWriteStream,
+  ReadStream, WriteStream
+} from 'fs';
+import Path from 'path';
 import { headersHandler, rawsHandler, errorHandler } from './utils';
 
 const csv = require('csvtojson');
