@@ -1,26 +1,21 @@
-import { createReadStream, createWriteStream } from 'fs';
+import { createReadStream, createWriteStream } from "fs";
 import { ReadStream, WriteStream } from "node:fs";
+import Path from "path";
+import { headersHandler, rawsHandler, errorHandler } from './utils';
 
 const csv = require('csvtojson');
 
-function handling(error: Error): void {
-  process.stdout.write(error.message);
-}
+const readablePath = Path.resolve(__dirname, './csv/nodejs-hw1-ex1.csv');
+const writablePath = Path.resolve(__dirname, './txt/content.txt');
 
-const readable: ReadStream = createReadStream(`${__dirname}/csv/nodejs-hw1-ex1.csv`, { highWaterMark: 2 });
-const writable: WriteStream = createWriteStream(`${__dirname}/txt/content.txt`);
+const readable: ReadStream = createReadStream(readablePath, { highWaterMark: 2 });
+const writable: WriteStream = createWriteStream(writablePath);
 
 readable
-  .on('error', handling)
-  .pipe(csv()
-    .preFileLine((fileLineString, lineIdx) => {
-      const line = `[ \x1b[32m${fileLineString}\x1b[0m ]`;
-      const numberLine = `[ \x1b[32m${lineIdx}\x1b[0m ]`;
-      const info = `This line ${line} number ${numberLine} has been parsed in csv stream.`
-      process.stdout.write(info + '\n');
-      return new Promise((resolve)=>{
-        resolve(fileLineString);
-      })
-    }))
+  .on('error', errorHandler)
+  .pipe(csv({ checkType: true })
+    .preFileLine(headersHandler)
+    .subscribe(rawsHandler)
+  )
   .pipe(writable)
-  .on('error', handling);
+  .on('error', errorHandler);
