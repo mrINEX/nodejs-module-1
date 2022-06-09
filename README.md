@@ -23,6 +23,7 @@ npm install
 
 ```
 npm run task-1 {mode}
+npm run task-2
 
 ```
 
